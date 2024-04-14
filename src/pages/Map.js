@@ -17,15 +17,12 @@ const Map = () => {
   const [ltaCarparks, setLtaCarparks] = useState([]);
   const [hdbCarparks, setHdbCarparks] = useState([]);
 
-
-
   useEffect(() => {
-    if (initialLoad){
-        apiLTAGet();
-        apiHDBGet();
-        initialLoad = false;
+    if (initialLoad) {
+      apiLTAGet();
+      apiHDBGet();
+      initialLoad = false;
     }
-
   }, []);
 
   const apiLTAGet = async () => {
@@ -75,6 +72,19 @@ const Map = () => {
     }
   };
 
+  const createCustomClusterIcon = (cluster) => {
+    const allChildMarkers = cluster.getAllChildMarkers();
+    const total = allChildMarkers.reduce((sum, marker) => {
+      const available = parseFloat(marker.options.children.props.children[0]);
+      return sum + available;
+    }, 0);
+
+    return L.divIcon({
+      html: "<b class='cluster-icon'>" + total + "</b>",
+      className: ""
+    });
+  };
+
   return (
     <div className="flex-container">
       <div className="flex-child-map">
@@ -88,7 +98,10 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          <MarkerClusterGroup>
+          <MarkerClusterGroup
+            showCoverageOnHover={false}
+            iconCreateFunction={createCustomClusterIcon}
+          >
             {ltaCarparks.map((carpark) => {
               const coord = carpark.Location.split(" ");
               const lat = coord[0];
@@ -105,7 +118,7 @@ const Map = () => {
                 );
               }
             })}
-            
+
             {hdbCarparks.map((carpark) => {
               if (carpark && carpark.lots_available) {
                 const lat = carpark.lat;
@@ -114,11 +127,11 @@ const Map = () => {
                 if (lat && lon) {
                   return (
                     <CarparkIcon
-                    availableLots={carpark.lots_available}
-                    lat={lat}
-                    lon={lon}
-                    carparkName={carpark.address}
-                  />
+                      availableLots={carpark.lots_available}
+                      lat={lat}
+                      lon={lon}
+                      carparkName={carpark.address}
+                    />
                   );
                 }
               }

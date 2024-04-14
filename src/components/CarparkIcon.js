@@ -18,7 +18,7 @@ const CarparkIcon = ({ availableLots, lat, lon, carparkName }) => {
         opacity={1}
         permanent={true}
         className={
-          "my-labels" +
+          "label" +
           (availableLots < 30
             ? availableLots < 5
               ? " red-icon"
