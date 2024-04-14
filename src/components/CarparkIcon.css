@@ -1,0 +1,21 @@
+.my-labels {
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 50px;
+}
+
+.red-icon {
+  background-color: rgb(233, 28, 28);
+  border: rgb(233, 28, 28);
+}
+
+.green-icon{
+    background-color: rgb(70, 219, 70);
+    border: rgb(70, 219, 70);
+}
+
+.orange-icon{
+    background-color: rgb(245, 229, 14);
+    border: rgb(245, 229, 14);
+}
