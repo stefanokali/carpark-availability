@@ -139,9 +139,9 @@ const Map = () => {
           </MarkerClusterGroup>
         </MapContainer>
       </div>
-      <div className="flex-child-detail">
+      {/* <div className="flex-child-detail">
         <Detail />
-      </div>
+      </div> */}
     </div>
   );
 };
