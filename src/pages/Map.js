@@ -26,7 +26,6 @@ const Map = () => {
   }, []);
 
   const apiLTAGet = async () => {
-    console.log(process.env.REACT_APP_API_KEY_LTA)
     try {
       const response = await apiLTA.get("", {
         headers: {
