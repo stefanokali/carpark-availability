@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL_LTA = 'http://localhost:8080/http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2';
+const BASE_URL_LTA = 'http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2';
 export const apiLTA = axios.create({ baseURL: BASE_URL_LTA });
 
 const BASE_URL_HDB = 'https://api.data.gov.sg/v1/transport/carpark-availability';
